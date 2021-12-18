@@ -1,0 +1,64 @@
+.headerContainer{
+
+    height: 5rem;
+    border-bottom: 1px solid #29292e;
+
+
+    button{
+        margin-left: auto;
+    }
+
+}
+
+.headerContent{
+    max-width: 1120px;
+    height: 5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: flex;
+    align-items: center;
+
+    nav{
+        margin-left: 5rem;
+        height: 5rem;
+
+        a{
+            display: inline-block;
+            position: relative;
+
+            padding: 0 0.5rem;
+
+            height: 5rem;
+            line-height: 5rem; //isso e para deixa o text no centro quando colocar height com msm valor do line-h ele fica no centro
+            color: var(--gray-300);
+            transition: color 0.4s;
+
+            & + a{
+                margin-left: 2rem;
+            }
+
+            &:hover{
+                color: var(--white);
+
+            }
+
+            &.active{
+                color: var(--white);
+                font-weight: bold;
+            }
+
+            &.active::after{
+                // isso vai colocar algo antes do mechamento da tag a
+                content: ''; // isso aqui e ara colocar conteudo por isso deixamos ele vazio
+                height: 3px;
+                border-radius: 3px 3px 0 0 ;
+                width:100%;
+                position: absolute;
+                bottom: 1px;
+                left: 0;
+                background: var(--yellow-500);
+            }
+        }
+    }
+}

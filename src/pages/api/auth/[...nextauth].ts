@@ -32,6 +32,49 @@ export default NextAuth({
   ],
 
   callbacks: {
+
+    async session ({session}) {
+      // esse call aqui e para adicionar algo a mais no session, assim__
+      // podemos usar tudo que esta aqui em todo a aplicação
+      
+      try {
+        const userActiveSubscription = await fauna.query(
+          q.Get(
+            q.Intersection([
+              q.Match(
+                q.Index('subscription_by_ref'),
+                q.Select(
+                  "ref",
+                  q.Get(
+                    q.Match(
+                      q.Index('user_by_email'),
+                      q.Casefold(session.user.email)
+                    )
+                  )
+                )
+              ),
+              q.Match(
+                q.Index('subscription_by_status'),
+                "active"
+              )
+            ])
+          )
+        )
+
+        return {
+          ...session,
+          activeSubscription: userActiveSubscription
+        }
+      }catch(err){
+        return {
+          ...session,
+          activeSubscription: null
+        }
+      }
+
+      
+    },
+
     async signIn({ user, account, profile, credentials }) {
       
       const {email} = user

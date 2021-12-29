@@ -1,6 +1,6 @@
 # Ignews
 
-<h3>Aplicação esta em produção, adamento: 60%</h3>
+<h3>Aplicação esta em produção, 95% pronta.</h3>
 
 
 
@@ -12,7 +12,7 @@
 <li>ReactJs</li>
 <li>NextJs</li>
 <li>FaunaDB</li>
-<li>SSR</li>
-<li>SSG</li>
+<li>TypeScript</li>
+<li>Next-Auth</li>
 <li>Stripe</li>
 </ul>
